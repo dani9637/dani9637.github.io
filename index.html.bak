@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Rental Mobil Jaya - Pesan Langsung via WhatsApp</title>
+  <link rel="stylesheet" href="style.css" />
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@400;600&display=swap" rel="stylesheet">
+</head>
+<body>
+  <!-- Header -->
+  <header>
+    <div class="logo">
+      <img src="images/logo.png" alt="Logo Rental" />
+      <h1>Rental Mobil Jaya</h1>
+    </div>
+    <nav>
+      <a href="#home">Beranda</a>
+      <a href="#mobil">Mobil Tersedia</a>
+      <a href="#pemesanan">Pesan Sekarang</a>
+      <a href="#kontak">Kontak</a>
+    </nav>
+  </header>
+
+  <!-- Hero Section -->
+  <section id="home" class="hero">
+    <div class="hero-content">
+      <h2>Rental Mobil Terbaik di Kota Anda</h2>
+      <p>Pesan cepat, harga bersaing, antar-jemput tersedia. <strong>Pesan langsung via WhatsApp!</strong></p>
+      <a href="#pemesanan" class="btn">Pesan Sekarang</a>
+    </div>
+  </section>
+
+  <!-- Mobil Tersedia -->
+  <section id="mobil" class="mobil-section">
+    <h2>Mobil Tersedia</h2>
+    <div class="mobil-list" id="mobilList">
+      <!-- Mobil akan di-load via JavaScript -->
+    </div>
+  </section>
+
+  <!-- Form Pemesanan -->
+  <section id="pemesanan" class="form-section">
+    <h2>Form Pemesanan</h2>
+    <form id="orderForm">
+      <div class="form-group">
+        <label for="name">Nama Lengkap</label>
+        <input type="text" id="name" placeholder="Masukkan nama" required />
+      </div>
+      <div class="form-group">
+        <label for="phone">Nomor WhatsApp</label>
+        <input type="tel" id="phone" placeholder="Contoh: 081234567890" required />
+      </div>
+      <div class="form-group">
+        <label for="car">Pilih Mobil</label>
+        <select id="car" required>
+          <option value="">-- Pilih Mobil --</option>
+          <option value="Avanza - Rp 400.000/hari">Avanza</option>
+          <option value="Innova - Rp 600.000/hari">Innova</option>
+          <option value="Xenia - Rp 350.000/hari">Xenia</option>
+          <option value="Alphard - Rp 1.200.000/hari">Alphard</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="date">Tanggal Sewa</label>
+        <input type="date" id="date" required />
+      </div>
+      <div class="form-group">
+        <label for="days">Durasi (Hari)</label>
+        <input type="number" id="days" min="1" value="1" required />
+      </div>
+      <button type="submit" class="btn">Kirim Pesan via WhatsApp</button>
+    </form>
+  </section>
+
+  <!-- Kontak -->
+  <section id="kontak" class="kontak-section">
+    <h2>Kontak Kami</h2>
+	<iframe src="https://maps.google.com/maps?q=Jl.%20Raya%20Kota%20No.123&t=&z=13&ie=UTF8&iwloc=&output=embed" width="100%" height="300" frameborder="0" style="border:0;" allowfullscreen="" aria-hidden="false" tabindex="0"></iframe>
+    <p><strong>WhatsApp:</strong> <a href="https://wa.me/6281234567890" target="_blank">0812-3456-7890</a></p>
+    <p><strong>Alamat:</strong> Jl. Raya Kota No. 123, Jakarta</p>
+    <p><strong>Jam Operasional:</strong> 07:00 - 22:00 (Setiap Hari)</p>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>&copy; 2025 Rental Mobil Jaya. Semua Hak Dilindungi.</p>
+  </footer>
+
+  <script src="script.js"></script>
+</body>
+</html>

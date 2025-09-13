@@ -1,0 +1,95 @@
+// Data mobil
+const mobilData = [
+  {
+    nama: "Toyota Avanza",
+    harga: "Rp 400.000/hari",
+    gambar: "images/mobil1.jpg",
+    fitur: ["AC", "Audio", "2 Airbag", "Kapasitas 7 orang"]
+  },
+  {
+    nama: "Toyota Innova",
+    harga: "Rp 600.000/hari",
+    gambar: "images/mobil2.jpg",
+    fitur: ["AC", "Audio", "4 Airbag", "Kapasitas 7 orang", "GPS"]
+  },
+  {
+    nama: "Daihatsu Xenia",
+    harga: "Rp 350.000/hari",
+    gambar: "images/mobil1.jpg",
+    fitur: ["AC", "Audio", "Kapasitas 7 orang"]
+  },
+  {
+    nama: "Toyota Alphard",
+    harga: "Rp 1.200.000/hari",
+    gambar: "images/mobil2.jpg",
+    fitur: ["AC", "Kursi Kulit", "TV", "Kapasitas 7 orang", "Driver"]
+  }
+];
+
+// Load mobil ke halaman
+function loadMobil() {
+  const container = document.getElementById("mobilList");
+  container.innerHTML = "";
+
+  mobilData.forEach(mobil => {
+    const card = document.createElement("div");
+    card.className = "mobil-card";
+
+    card.innerHTML = `
+      <img src="${mobil.gambar}" alt="${mobil.nama}" />
+      <div class="info">
+        <h3>${mobil.nama}</h3>
+        <p><strong>${mobil.harga}</strong></p>
+        <ul>
+          ${mobil.fitur.map(f => `<li>• ${f}</li>`).join('')}
+        </ul>
+        <button class="btn" onclick="pesanMobil('${mobil.nama}', '${mobil.harga}')">Pesan via WA</button>
+      </div>
+    `;
+
+    container.appendChild(card);
+  });
+}
+
+// Fungsi pesan langsung dari card
+function pesanMobil(namaMobil, harga) {
+  const now = new Date();
+  const today = now.toISOString().split('T')[0];
+  const phone = prompt("Masukkan nomor WhatsApp Anda (contoh: 081234567890):");
+  if (!phone) return;
+
+  const days = prompt("Berapa hari sewa?", "1");
+  if (!days || isNaN(days)) return;
+
+  const message = `HALO%20RENTAL%20JAYA%0A%0ASaya%20ingin%20memesan%20mobil%20berikut%3A%0A%0A*${namaMobil}*%0AHarga%3A%20${harga}%0ADurasi%3A%20${days}%20hari%0ATanggal%20Sewa%3A%20${today}%0ANomor%20WA%3A%20${phone}%0A%0ATerima%20kasih!`;
+
+  const waLink = `https://wa.me/6282115149696?text=${message}`;
+  window.open(waLink, '_blank');
+}
+
+// Form submit ke WA
+document.getElementById("orderForm").addEventListener("submit", function(e) {
+  e.preventDefault();
+
+  const name = document.getElementById("name").value;
+  const phone = document.getElementById("phone").value;
+  const car = document.getElementById("car").value;
+  const date = document.getElementById("date").value;
+  const days = document.getElementById("days").value;
+
+  if (!car) {
+    alert("Silakan pilih mobil!");
+    return;
+  }
+
+  const message = `HALO%20RENTAL%20JAYA%0A%0ASaya%20ingin%20memesan%20mobil%20berikut%3A%0A%0A*Nama%3A*%20${encodeURIComponent(name)}%0A*Mobil%3A*%20${encodeURIComponent(car)}%0A*Tanggal%20Sewa%3A*%20${date}%0A*Durasi%3A*%20${days}%20hari%0A*Nomor%20WA%3A*%20${phone}%0A%0ATerima%20kasih!`;
+
+  const waLink = `https://wa.me/6281234567890?text=${message}`;
+  window.open(waLink, '_blank');
+
+  // Reset form
+  this.reset();
+});
+
+// Load data saat halaman siap
+window.onload = loadMobil;
